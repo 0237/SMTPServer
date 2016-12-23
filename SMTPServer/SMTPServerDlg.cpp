@@ -51,7 +51,7 @@ BOOL CSMTPServerDlg::OnInitDialog()
 	int bFlag = MySock.Create(25, SOCK_STREAM, FD_ACCEPT | FD_READ);
 	if (bFlag == 0)
 	{
-		m_log.SetWindowText(L"SMTP套接口建立失败\r\n");
+		m_log.SetWindowText(_T("SMTP套接口建立失败\r\n"));
 		MySock.Close();
 	}
 	else
@@ -61,12 +61,12 @@ BOOL CSMTPServerDlg::OnInitDialog()
 		int i = MySock.Listen(1);
 		if (i == 0)
 		{
-			m_log.SetWindowText(L"SMTP监听失败\r\n");
+			m_log.SetWindowText(_T("SMTP监听失败\r\n"));
 			MySock.Close();
 		}
 		else
 		{
-			m_log.SetWindowText(L"SMTP服务器准备好\r\n\r\n");
+			m_log.SetWindowText(_T("SMTP服务器准备好\r\n\r\n"));
 		}
 	}
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
