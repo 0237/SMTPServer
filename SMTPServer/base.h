@@ -25,7 +25,7 @@ BOOL DeCode(CString &attachment, HBITMAP &picture)
 {
 	BYTE buf[4];
 	CFile file;
-	if (file.Open(L"1.bmp", CFile::modeWrite | CFile::modeCreate))
+	if (file.Open(_T("1.bmp"), CFile::modeWrite | CFile::modeCreate))
 	{
 		int len = attachment.GetLength();
 		BYTE temp[4];

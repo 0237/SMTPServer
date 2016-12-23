@@ -161,13 +161,13 @@ void SMTPsocket::OnReceive(int nErrorCode)
 				Send(send, strlen(send), 0);
 				pMMD->m_log.InsertString(Count++, _T("S: 250 Message accepted for delivery"));
 				AfxGetMainWnd()->GetDlgItemText(IDC_EDIT1, pic);
-				if (pic.Find(L"Content-Type: image/bmp") != -1)//附件中有bmp图片
+				if (pic.Find(_T("Content-Type: image/bmp")) != -1)//附件中有bmp图片
 				{
 					//截取bmp图片的base64编码
-					int Attachment_Start = pic.Find(L"Content-Disposition: attachment", 0);
-					int Bmp_Start = pic.Find(L"\r\n\r\n", Attachment_Start);
+					int Attachment_Start = pic.Find(_T("Content-Disposition: attachment"), 0);
+					int Bmp_Start = pic.Find(_T("\r\n\r\n"), Attachment_Start);
 					CString Start = pic.Mid(Bmp_Start + 4, pic.GetLength() - Bmp_Start - 4);
-					int length = Start.Find(L"\r\n\r\n", 0);
+					int length = Start.Find(_T("\r\n\r\n"), 0);
 					pic = Start.Left(length);
 					HBITMAP picture;
 					//解码
